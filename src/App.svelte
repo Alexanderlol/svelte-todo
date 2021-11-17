@@ -7,6 +7,11 @@
 		newItem = '';
 	}
 
+	function removeFromList(i){
+		items.splice(i,1);
+		items = items;
+	}
+
 </script>
 
 <main>
@@ -14,10 +19,11 @@
 	<input bind:value={newItem} type="text" placeholder="new item">
 	<button on:click={addToList}>Add</button>
 	<ul>
-		{#each items as item}
+		{#each items as item, i}
 		<li>
-			{item.text}
-			<p>test</p>
+			<input bind:checked={item.status} type="checkbox">
+			<span class:checked={item.status}>{item.text}</span>
+			<span on:click={() => removeFromList(i)}>X</span>
 		</li>
 		{/each}
 	</ul>
@@ -42,5 +48,9 @@
 		main {
 			max-width: none;
 		}
+
+	.checked {
+		text-decoration: line-through;
+	}
 	}
 </style>
