@@ -17,6 +17,7 @@
 		{#each items as item}
 		<li>
 			{item.text}
+			<p>test</p>
 		</li>
 		{/each}
 	</ul>
